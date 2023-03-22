@@ -188,7 +188,7 @@ main {
 
 .about .underline, .underline:visited {
   text-decoration: underline;
-  color: white;
+  color: var(--text-color);
 }
 
 /* Links section
