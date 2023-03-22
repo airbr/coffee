@@ -188,7 +188,7 @@ main {
 
 .about .underline {
   text-decoration: underline;
-  color: blue;
+  /* color: white; */
 }
 
 /* Links section
