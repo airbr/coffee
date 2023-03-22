@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html class="preload" lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+
+    <!-- The name of your site that shows up in the browser tab -->
+    <title>May 13 Bellingham Coffee Crawl</title>
+
+    <!-- Describe what your site is about -->
+    <meta name="description" content="The coffee event of the day that it happens.">
+
+    <!-- This is the small icon that shows up in the browser tab -->
+    <link rel="shortcut icon" href="/images/favicon.png">
+
+    <!-- Styling for this site -->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <script type="module" src="https://unpkg.com/count-down-web-component@0.1.0/lib/countdown.js"></script>
+
+
+  </head>
+
+  <!-- This class is removed if the user has JavaScript enabled -->
+  <body class="no-js">
+    <header>
+      <!-- Dark mode toggle -->
+      <div class="mode-toggle">
+        <button class="[ toggle-button ] [ js-mode-toggle ]">
+          <span class="toggle-icon" aria-hidden="true"></span>
+          <span class="[ toggle-text ] [ js-mode-toggle-text ]">Switch to dark theme</span>
+        </button>
+      </div>
+    </header>
+    <main>
+
+        <h1><a style="color: white;" href="index.html">Home</a></h1>
+
+        <form class="rsvp-form" name="contact" method="POST" data-netlify="true">
+            <p>
+              <label>Your Name: <input style="min-width: 100%; min-height: 60px;" type="text" name="name" /></label>
+            </p>
+            <p>
+              <label>Your Email: <input style="min-width: 100%; min-height: 60px;" type="email" name="email" /></label>
+            </p>
+            <!-- <p>
+              <label>Where do you plan to meet? 
+                <select name="role[]" multiple>
+                <option value="11hour">11th Hour</option>
+                <option value="Camber">Camber</option>
+                <option value="Ashuri">Ashuri</option>
+                <option value="Cafe Velo">Cafe Velo</option>
+                <option value="Black Fern">Blackfern</option>
+              </select></label>
+            </p> -->
+            <p>
+              <label>Message: <textarea style="min-width: 100%; min-height: 250px;" name="message"></textarea></label>
+            </p>
+            <p>
+              <button class="rsvp-button" type="submit">Send</button>
+            </p>
+          </form>
+
+    </main>
+
+    <!-- Dark mode button functionality -->
+    <script src="/js/dark-mode.js"></script>
+  </body>
+</html>

@@ -186,9 +186,9 @@ main {
   padding-left: 1em;
 }
 
-.about .underline {
+.about .underline, .underline:visited {
   text-decoration: underline;
-  /* color: white; */
+  color: white;
 }
 
 /* Links section
@@ -278,4 +278,26 @@ main {
 .links > a:focus,
 .links > a:focus > strong {
   background-color: var(--background-alt);
+}
+
+/* RSVP section
+---------------------------*/
+
+.rsvp-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 22px;
+}
+
+.rsvp-button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
 }
