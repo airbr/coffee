@@ -89,6 +89,7 @@ body {
   font-family: "Inter UI", Helvetica, Arial, sans-serif;
   line-height: 1.4;;
   color: var(--text-color);
+  font-display: swap;
 }
 
 body.no-js {
