@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html class="preload" lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+
+    <!-- The name of your site that shows up in the browser tab -->
+    <title>May 13 Bellingham Coffee Crawl</title>
+
+    <!-- Describe what your site is about -->
+    <meta name="description" content="The coffee event of the day that it happens.">
+
+    <!-- This is the small icon that shows up in the browser tab -->
+    <link rel="shortcut icon" href="/images/favicon.png">
+
+    <!-- Styling for this site -->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <script type="module" src="https://unpkg.com/count-down-web-component@0.1.0/lib/countdown.js"></script>
+
+
+  </head>
+
+  <!-- This class is removed if the user has JavaScript enabled -->
+  <body class="no-js">
+    <header>
+      <!-- Dark mode toggle -->
+      <div class="mode-toggle">
+        <button class="[ toggle-button ] [ js-mode-toggle ]">
+          <span class="toggle-icon" aria-hidden="true"></span>
+          <span class="[ toggle-text ] [ js-mode-toggle-text ]">Switch to dark theme</span>
+        </button>
+      </div>
+    </header>
+    <main>
+      <section class="about">
+        <h1>☕A subdued coffee social☕</h1>
+        <p>And birthday party</p>
+        <h1>May 13th 2023</h1>
+        <h2>10am-3pm</h2>
+        <p>Come walk around town and go to several coffee shops in our little city.</p>
+        <count-down ends="2023-05-13" breakpoint1="25em" breakpoint2="50em">
+          <h2 slot="heading">Lets crawl in...</h2>
+          <time>2023-05-13</time>
+        </count-down>
+
+        <a href="https://www.google.com/maps/d/u/0/edit?mid=1x2ZigERyMxKzvtjJOEi46nhMVLqeGPM&usp=sharing"><h1 class="underline">Map Link</h1></a>
+      </section>
+      <nav class="links">
+        <a href="https://www.11thhourteaandcoffeebar.com/">
+          <strong>11th Hour</strong>
+          <span>10am</span>
+        </a>
+        <a href="https://cambercoffee.com/">
+          <strong>Camber</strong>
+          <span>11am</span>
+        </a>
+        <a href="https://www.ashuri.co/">
+          <strong>Ashuri</strong>
+          <span>12pm</span>
+        </a>
+        <a href="https://www.cafe-velo.cc/">
+          <strong>Cafe Velo</strong>
+          <span>1pm</span>
+        </a>
+        <a href="https://www.blackferncoffee.com/">
+          <strong>Black fern</strong>
+          <span>2pm->onwards</span>
+        </a>
+      </nav>
+    </main>
+
+    <!-- Dark mode button functionality -->
+    <script src="/js/dark-mode.js"></script>
+  </body>
+</html>
