@@ -188,10 +188,6 @@ main {
 
 .about .underline {
   text-decoration: underline;
-  color: whitesmoke;
-}
-
-.about .underline:hover {
   color: blue;
 }
 
@@ -265,8 +261,13 @@ main {
   }
 }
 
-.links > a:hover > span,
+/* .links > a:hover > span,
 .links > a:focus > span  {
+  transform: translateX(1em);
+} */
+
+.links > a > span,
+.links > a > span  {
   transform: translateX(1em);
 }
 
