@@ -3,23 +3,356 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-
-    <!-- The name of your site that shows up in the browser tab -->
     <title>May 13 Bellingham Coffee Crawl</title>
-
-    <!-- Describe what your site is about -->
-    <meta name="description" content="The coffee event of the day that it happens.">
-
-    <!-- This is the small icon that shows up in the browser tab -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+    <meta name="description" content="The second annual Bellin.">
     <link rel="shortcut icon" href="/images/favicon.png">
 
-    <!-- Styling for this site -->
-    <link rel="stylesheet" href="/css/styles.css">
+    <style>
+      /* Fonts
+      --------------------------*/
+      /* @import url("https://rsms.me/inter/inter.css"); */
 
-    <script type="module" src="https://unpkg.com/count-down-web-component@0.1.0/lib/countdown.js"></script>
+      @font-face {
+        font-family: 'Inter var';
+        font-style: normal;
+        font-weight: 100 900;
+        font-display: swap;
+        src: url('/Inter-roman.var.woff2?v=3.19') format('woff2');
+        font-named-instance: 'Regular';
+      }
+
+      :root { font-family: 'Inter', sans-serif; }
+      @supports (font-variation-settings: normal) {
+        :root { font-family: 'Inter var', sans-serif; }
+      }
+
+      /* Variables
+      ---------------------------*/
+
+      :root {
+
+        --color-teal-T1000: #052028;
+        --color-teal-T900: #054861;
+        --color-teal-T800: #0F6A80;
+
+        --color-gray-L700: #33373B;
+        --color-gray-L200: #F2F5F8;
+        --color-gray-D200: #A3A8AC;
+
+        --color-yellow-Y500: #FFB916;
+        --color-yellow-Y400: #FFCF50;
+
+        --color-red-R600: #DB4648;
+
+        --body-border: .6em;
+        --body-padding: 3vw;
+        --color-mode: 'light';
+        --background: var(--color-yellow-Y500);
+        --background-alt:  var(--color-yellow-Y400);
+        --text-color: var(--color-gray-L700);
+        --mode-icon: '🌑';
+        --mode-icon-opacity: '1';
+        --border-color: var(--text-color);
+      }
+
+      /* Dark Mode
+      ---------------------------*/
+
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --color-mode: 'dark';
+        }
+
+        :root:not([data-user-color-scheme]) {
+          --background: var(--color-teal-T1000);
+          --background-alt: var(--color-teal-T900);
+          --text-color: var(--color-gray-L200);
+          --border-color: var(--color-teal-T800);
+          --mode-icon: '🌕';
+          --mode-icon-opacity: .85;
+        }
+      }
+
+      [data-user-color-scheme='dark'] {
+        --background: var(--color-teal-T1000);
+        --background-alt: var(--color-teal-T900);
+        --text-color: var(--color-gray-L200);
+        --border-color: var(--color-teal-T800);
+        --mode-icon: '🌕';
+        --mode-icon-opacity: .85;
+      }
+
+      /* Global
+      ---------------------------*/
+
+      *, *::before, *::after {
+        box-sizing: border-box;
+      }
+
+      ::selection {
+        background-color: var(--color-red-R600);
+        color: var(--color-gray-L200);
+      }
+
+      html {
+        height: 100vh;
+        padding: var(--body-border);
+        background-color: var(--background-alt);
+      }
+
+      body {
+        min-height: calc(100vh - var(--body-border)*2);
+        margin: 0;
+        padding: 2.5vw 2.5vw 5vw;
+        display: flex;
+        flex-direction: column;
+        gap: 1vw;
+        background-color: var(--background);
+        border-radius: 5px;
+        font-size: 112.5%;
+        line-height: 1.4;
+        color: var(--text-color);
+        font-display: swap;
+      }
+
+      body.no-js {
+        padding-top: 5vw;
+      }
+
+      /* Header
+      ---------------------------*/
+
+      header {
+        display: flex;
+        justify-content: flex-end;
+        flex: 1 0 1;
+      }
+
+      body.no-js .toggle-button {
+        display: none;
+      }
+
+      .toggle-button {
+        margin-top: auto;
+        padding: .4em .8em;
+        background-color: var(--background-alt);
+        border: none;
+        border-radius: 5px;
+        font-size: clamp(1rem, 1vw, 1.5rem);
+        color: var(--text-color);
+        cursor: pointer;
+      }
+
+      .toggle-button::before {
+        content: var(--mode-icon);
+        opacity: var(--mode-icon-opacity);
+      }
+
+      .toggle-button:focus {
+        outline: none;
+        border: none;
+      }
+
+      .toggle-button:focus-visible {
+        outline: 2px solid var(--text-color);
+      }
+
+      /* Main
+      ---------------------------*/
+
+      main {
+        display: flex;
+        flex-direction: column;
+        gap: 3vw;
+        flex: 1;
+      }
+
+      @media screen and (min-width: 800px) {
+        main {
+          flex-direction: row;
+        }
+      }
+
+      /* About section
+      ---------------------------*/
+
+      .about {
+        padding: 1rem var(--body-padding) 0;
+        flex: 1 0 1;;
+      }
+
+      @media screen and (min-width: 800px) {
+        .about {
+          padding: 1rem 0 0;
+          flex: 1;
+        }
+      }
+
+      .about,
+      .links {
+        border-top: 4px solid var(--border-color);
+      }
+
+      .about > * {
+        margin: 0 0 1rem;
+        font-size: clamp(1rem, 1.5vw, 2.3rem);
+      }
+
+      .about h1 {
+        font-size: clamp(1.5rem, 2.5vw, 3.5rem);
+      }
+
+      .about h2 {
+        font-size: clamp(1.2rem, 2vw, 2.7rem);
+      }
+
+      .about ul {
+        padding-left: 1em;
+      }
+
+      .about .underline, .underline:visited {
+        text-decoration: underline;
+        color: var(--text-color);
+      }
+
+      /* Links section
+      ---------------------------*/
+
+      .links {
+        display: flex;
+        flex-direction: column;
+        flex: 2;
+      }
+
+      .links > a {
+        padding-right: var(--body-padding);
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        flex: 1;;
+        border-bottom: 1px solid var(--border-color);
+        text-decoration: none;
+        font-size: clamp(1.5rem, 5vw, 10rem);
+        color: var(--text-color);
+      }
+
+      .links > a > strong {
+        padding-left: var(--body-padding);
+        padding-right: .5em;
+        position: relative;
+        display: flex;
+        align-items: center;
+        background-color: var(--background);
+        z-index: 1;
+      }
+
+      .links > a > strong:after {
+        content: '';
+        width: 1px;
+        height: 100%;
+        position: absolute;
+        right: 0;
+        top: 50%;
+        background-color: var(--text-color);
+        opacity: 0;
+        transition: opacity 100ms ease-in-out;
+        transform: translateY(-50%);
+      }
+
+      @media screen and (min-width: 800px) {
+        .links > a > strong:after {
+          height: 80%;
+        }
+      }
+
+      .links > a:hover > strong:after,
+      .links > a:focus > strong:after {
+        opacity: .5;
+      }
+
+      .links > a > span {
+        position: relative;
+        font-size: clamp(1rem, 2vw, 2rem);
+        transition: transform 150ms ease-in-out;
+        transform: translateX(-100%);
+        z-index: 0;
+      }
+
+      @media (prefers-reduced-motion) {
+        .links > a > span {
+          transition: none;
+        }
+      }
+
+      /* .links > a:hover > span,
+      .links > a:focus > span  {
+        transform: translateX(1em);
+      } */
+
+      .links > a > span,
+      .links > a > span  {
+        transform: translateX(1em);
+      }
+
+      .links > a:focus {
+        outline: none;
+      }
+
+      .links > a:focus,
+      .links > a:focus > strong {
+        background-color: var(--background-alt);
+      }
+
+      /* RSVP section
+      ---------------------------*/
+
+      .rsvp-form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-size: 22px;
+      }
+
+      .rsvp-button {
+        background-color: #4CAF50; /* Green */
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+      }
 
 
+      /* Details */
+
+      details {
+        border: 1px solid #aaa;
+        border-radius: 4px;
+        padding: 0.5em 0.5em 0;
+      }
+
+      summary {
+        font-weight: bold;
+        margin: -0.5em -0.5em 0;
+        padding: 0.5em;
+      }
+
+      details[open] {
+        padding: 0.5em;
+      }
+
+      details[open] summary {
+        border-bottom: 1px solid #aaa;
+        margin-bottom: 0.5em;
+      }
+    </style>
+
+    <!-- <script type="module" src="https://unpkg.com/count-down-web-component@0.1.0/lib/countdown.js"></script> -->
   </head>
 
   <!-- This class is removed if the user has JavaScript enabled -->
@@ -35,8 +368,8 @@
     </header>
     <main>
       <section class="about">
-        <h1>☕ subdued coffee social ☕</h1>
-        <p>And a birthday party for <a class="underline"  href="https://morganwebdev.com">yours truly</a>...</p>
+        <h1>☕ coffee crawl ☕</h1>
+        <p>and a birthday party for <a class="underline"  href="https://morganwebdev.com">yours truly</a>...</p>
         <h1>May 13th 2023</h1>
         <h2>10am-3pm</h2>
         <p>Come walk around town and go to coffee shops in our little city of Bellingham.</p>
@@ -44,6 +377,14 @@
           <h2 slot="heading">Lets crawl in...</h2>
           <time>2023-05-13</time>
         </count-down> -->
+        <details>
+          <summary>Expand for Coffee Crawl Tips</summary>
+          <ul>
+            <li>You might find you don't want to crawl to every coffeeshop- choose one and meet people there if you like!</li>
+            <li>You might worry about being overcaffeinated- dont have to drink coffee at each place!</li>
+            <li>Join at your pace! much love</li>
+          </ul>
+        </details>
         <h2><a class="underline" href="form.html">RSVP</a></h2>
         <a href="https://www.google.com/maps/d/u/0/edit?mid=1x2ZigERyMxKzvtjJOEi46nhMVLqeGPM&usp=sharing"><h1 class="underline">Map Link</h1></a>
         <a href="https://www.morganwebdev.com/coffee-crawl.html"><h1 class="underline">2022 Website</h1></a>
@@ -73,6 +414,6 @@
     </main>
 
     <!-- Dark mode button functionality -->
-    <script src="/js/dark-mode.js"></script>
+    <script async defer src="/js/dark-mode.js"></script>
   </body>
 </html>
